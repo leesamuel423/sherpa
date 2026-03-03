@@ -1,4 +1,4 @@
-# research-agent
+# sherpa
 
 Self-healing evidence-backed research agent.
 
