@@ -11,7 +11,7 @@ Queries Wikipedia, arXiv, and Hacker News in parallel, synthesizes findings via 
 Prerequisites: Python 3.11+, [uv](https://docs.astral.sh/uv/)
 
 ```bash
-cp .env.example .env   # add your Groq API key
+cp .env.example .env   # add your LLM API key (Groq is the easiest to start)
 make install
 make run QUERY="quantum computing"
 ```
@@ -211,7 +211,7 @@ These are some of the architectural tradeoffs shaping the agent's design.
 
 ### Groq + Llama 3.3 over OpenAI
 
-The architecture document originally specified `gpt-4o-mini` with native JSON mode for highest first-attempt success rate. The implementation uses Groq (Llama 3.3 70B) instead, trading some structured output reliability for significantly lower cost and higher throughput. The three-stage Auditor pipeline compensates — schema failures caught by Pydantic validation trigger automatic retries, so the system self-heals even when the LLM's JSON compliance is imperfect. The LLM interface is provider-agnostic (a single `Protocol` type), so swapping back to OpenAI or another provider requires implementing one class.
+The default provider is Groq (Llama 3.3 70B) rather than OpenAI's `gpt-4o-mini`, trading some structured output reliability for significantly lower cost and higher throughput. The three-stage Auditor pipeline compensates — schema failures caught by Pydantic validation trigger automatic retries, so the system self-heals even when the LLM's JSON compliance is imperfect. The LLM interface is provider-agnostic (a single `Protocol` type), so swapping back to OpenAI or another provider requires implementing one class.
 
 ### Deterministic grounding over LLM judge
 
