@@ -151,7 +151,7 @@ def main():
     _configure_logging()
 
     if len(sys.argv) < 2:
-        print("Usage: python main.py <research query>", file=sys.stderr)
+        print("Usage: sherpa <research query>", file=sys.stderr)
         sys.exit(1)
 
     query = " ".join(sys.argv[1:])

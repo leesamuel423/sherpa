@@ -13,10 +13,8 @@ Prerequisites: Python 3.11+, [uv](https://docs.astral.sh/uv/)
 ```bash
 cp .env.example .env   # add your Groq API key
 make install
-sherpa "quantum computing"
+make run QUERY="quantum computing"
 ```
-
-`make run QUERY="quantum computing"` also works — it's a convenience wrapper around the `sherpa` CLI.
 
 Output is structured JSON printed to stdout. Logs go to stderr.
 
